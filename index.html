@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Черногория</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header fixed-top">
+        <nav class="navbar navbar-expand-lg w-100 py-3">
+            <div class="container-fluid px-3 px-lg-5">
+                <a class="navbar-brand logo p-0" href="#">
+                    <img src="./img/логотип.svg" alt="Логотип" class="rounded-circle">
+                </a>
+                
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="text-dark-blue fs-1"><i class="fa-solid fa-bars"></i></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end mt-3 mt-lg-0" id="navbarNav">
+                    <ul class="navbar-nav gap-3 text-center">
+                        <li class="nav-item"><a href="#visa" class="nav-link">Въезд и визы</a></li>
+                        <li class="nav-item"><a href="#tour" class="nav-link">Туры</a></li>
+                        <li class="nav-item"><a href="#culture" class="nav-link">Культура и обычаи</a></li>
+                        <li class="nav-item"><a href="#nature" class="nav-link">Природа и экология</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero d-flex align-items-center justify-content-center text-center text-white">
+        <div class="hero-content container px-4">
+            <h1 class="display-1 fw-bold mt-5 mb-2">Покори Черногорию с нами</h1>
+            <div class="d-flex justify-content-center gap-3 gap-md-4 flex-wrap">
+                <a href="#visa"><button class="btn btn-hero">Вперед к знаниям</button></a>
+                <a href="#quizzes"><button class="btn btn-hero">Проверить знания</button></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="accordion-section" id="visa">
+        <div class="container">
+            <div class="col-12 text-center">
+                <h2 class="display-5 mb-4">Въезд и визы</h2>
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-12 col-lg-10">
+                    <div class="accordion accordion-flush" id="visaAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseVisaFree">
+                                Безвизовый въезд
+                            </button>
+                            </h2>
+                            <div id="collapseVisaFree" class="accordion-collapse collapse" data-bs-parent="#visaAccordion">
+                                <div>
+                                    <ul>
+                                        <li class="accordion-body">Для граждан РФ, Украины, Беларуси, Казахстана и др. стран СНГ: до 90 дней в течение 180-дневного периода без визы (только по загранпаспорту). Условие: паспорт действителен минимум 3 месяца после планируемого выезда.</li>
+                                        <li class="accordion-body">Для граждан ЕС, США, Канады, Австралии: до 90 дней без визы.</li>
+                                        <li class="accordion-body">Ограничения: нельзя работать или учиться по безвизовому режиму.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTourist">
+                                Туристическая регистрация
+                            </button>
+                            </h2>
+                            <div id="collapseTourist" class="accordion-collapse collapse" data-bs-parent="#visaAccordion">
+                                <div>
+                                    <ul>
+                                        <li class="accordion-body">Обязательна в течение 24 часов после прибытия (кроме отелей — они регистрируют автоматически).</li>
+                                        <li class="accordion-body">Где регистрировать: в туристической инспекции или через хозяина апартаментов.</li>
+                                        <li class="accordion-body">Штраф за нерегистрацию: от 60 до 200 € на человека.</li>
+                                        <li class="accordion-body">С 2024 года — онлайн-регистрация через портал e-turista.me (~1 €/сутки).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExtension">
+                                Продление пребывания
+                            </button>
+                            </h2>
+                                <div id="collapseExtension" class="accordion-collapse collapse" data-bs-parent="#visaAccordion">
+                                <div>
+                                    <ul>
+                                        <li class="accordion-body">Если нужно > 90 дней — подача на временный вид на жительство (boravišna dozvola).</li>
+                                        <li class="accordion-body">Основания: покупка недвижимости, открытие фирмы, трудоустройство, воссоединение семьи.</li>
+                                        <li class="accordion-body">Документы: договор аренды/собственности, медстраховка, справка о несудимости, выписка счёта (~5000 € на человека).</li>
+                                        <li class="accordion-body">Срок рассмотрения: до 40 дней.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTransit">
+                                Транзит
+                            </button>
+                            </h2>
+                            <div id="collapseTransit" class="accordion-collapse collapse" data-bs-parent="#visaAccordion">
+                                <div>
+                                    <ul>
+                                        <li class="accordion-body">Безвизовый транзит — до 5 дней при наличии визы страны следования.</li>
+                                        <li class="accordion-body">Через аэропорты Подгорица (TGD) и Тиват (TIV) — без выхода в город.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePets">
+                                Въезд с животными
+                            </button>
+                            </h2>
+                            <div id="collapsePets" class="accordion-collapse collapse" data-bs-parent="#visaAccordion">
+                                <div>
+                                    <ul>
+                                        <li class="accordion-body">ЕС-сертификат или ветпаспорт, микрочип, прививка от бешенства (не ранее 21 дня до въезда).</li>
+                                        <li class="accordion-body">Для кошек/собак до 5 кг — в салоне самолёта.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCustoms">
+                                Таможенные правила
+                            </button>
+                            </h2>
+                            <div id="collapseCustoms" class="accordion-collapse collapse" data-bs-parent="#visaAccordion">
+                                <div>
+                                    <ul>
+                                        <li class="accordion-body">200 сигарет или 50 сигар;</li>
+                                        <li class="accordion-body">1 л крепкого алкоголя + 2 л вина;</li>
+                                        <li class="accordion-body">Личные вещи до 300 €;</li>
+                                        <li class="accordion-body">Деньги: более 10 000 € — декларировать.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tours-fullscreen-slider compact" id="tour">
+        <div class="container-fluid px-0">
+            <div class="row g-0">
+                <div class="col-lg-6 d-flex flex-column justify-content-center p-4 p-lg-5 order-2 order-lg-1">
+                    <h2 class="mb-4 text-center text-lg-start">Лучшие туры!</h2>
+                    <div class="tours-content">
+                        <div class="tour-content-item active">
+                            <h3 class="tour-name mb-3">Яхта-тур «Голубая пещера»</h3>
+                            <div class="text-content mb-3">
+                                <strong>Маршрут:</strong>
+                                <br>
+                                Тиват → о. Госпа од Шкрпела → Голубая пещера → устричная ферма → Пераст → Тиват
+                            </div>
+                            <div class="list">
+                                <strong>Включено:</strong>
+                                <ul class="mt-2 mb-0">
+                                    <li>Капитан + русскоязычный гид</li>
+                                    <li>Шампанское, фрукты, вода</li>
+                                    <li>Полотенца, маски, ласты</li>
+                                    <li>Страховка на борту</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tour-content-item">
+                            <h3 class="tour-name mb-3">Экскурсия «Макси Черногория»</h3>
+                            <div class="list mb-3">
+                                <strong>Программа:</strong>
+                                <ul class="mt-2 mb-0">
+                                    <li>День 1: Котор + Пераст + Ловчен (мавзолей)</li>
+                                    <li>День 2: Цетинье  + Скадарское озеро</li>
+                                    <li>День 3: Будва Старый город + о. Свети Стефан</li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <strong>Включено:</strong>
+                                <ul class="mt-2 mb-0">
+                                    <li>Трансфер на минивэне</li>
+                                    <li>Входные билеты (мавзолей, катер)</li>
+                                    <li>Обед: пршут + вино в Негуши</li>
+                                    <li>Гид-историк на русском</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tour-content-item">
+                            <h3 class="tour-name mb-3">Рафтинг по Таре «Лайт»</h3>
+                            <div class="list mb-3">
+                                <strong>Программа:</strong>
+                                <ul class="mt-2 mb-0">
+                                    <li>Сплав 2 ч по реке Тара (глубина каньона 1300 м)</li>
+                                    <li>Сложность 2/5 — подходит новичкам и детям 10+</li>
+                                    <li>Обед у костра: ягнёнок «испод сача»</li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <strong>Включено:</strong>
+                                <ul class="mt-2 mb-0">
+                                    <li>Гид-инструктор (англ/рус)</li>
+                                    <li>Снаряжение (неопрен, шлем, жилет)</li>
+                                    <li>Фото/видео с GoPro</li>
+                                    <li>Трансфер туда-обратно</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="tour-content-item">
+                            <h3 class="tour-name mb-3">Винный тур «Plantáže + Црмница»</h3>
+                            <div class="list mb-3">
+                                <strong>Программа:</strong>
+                                <ul class="mt-2 mb-0">
+                                    <li>Экскурсия по крупнейшему винограднику Европы (300 га)</li>
+                                    <li>Дегустация 5 сортов вин + сырная тарелка</li>
+                                    <li>Покупка вина со скидкой 15%</li>
+                                </ul>
+                            </div>
+                            <div class="list">
+                                <strong>Включено:</strong>
+                                <ul class="mt-2 mb-0">
+                                    <li>Трансфер из Будвы/Бара (+15 €)</li>
+                                    <li>Сомелье на русском</li>
+                                    <li>Бутылка вина 0,75 л в подарок</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tours-thumbs d-flex gap-3 mt-4 justify-content-center justify-content-lg-start">
+                        <div class="thumb active" data-index="0"><img src="./img/голубая пищера.svg" class="rounded-circle"></div>
+                        <div class="thumb" data-index="1"><img src="./img/макси черногория.svg" class="rounded-circle"></div>
+                        <div class="thumb" data-index="2"><img src="./img/рафтинг.svg" class="rounded-circle"></div>
+                        <div class="thumb" data-index="3"><img src="./img/винный тур.svg" class="rounded-circle"></div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 p-0 order-1 order-lg-2 tour-image-col">
+                    <div class="tour-big-image">
+                        <img src="./img/голубая пищера.svg" class="active">
+                        <img src="./img/макси черногория.svg">
+                        <img src="./img/рафтинг.svg">
+                        <img src="./img/винный тур.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="culture" class="py-5">
+        <div class="container"> 
+            <h2 class="text-center mb-5">Культура и обычаи</h2>
+
+            <div class="row row-cols-1 row-cols-md-3 g-4 g-md-5 justify-content-center" id="culture-cards-container">
+                <div class="col card-column" data-page="1">
+                    <div class="culture-card" data-card-id="1">
+                        <img src="./img/гостеприимство.jpg" class="card-img-full" alt="Гостеприимство">
+                        <div class="card-overlay">
+                            <h5 class="card-title">Гостеприимство по-Черногорски</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col card-column" data-page="1">
+                    <div class="culture-card" data-card-id="2">
+                        <img src="./img/слава.jpg" class="card-img-full" alt="Слава">
+                        <div class="card-overlay">
+                            <h5 class="card-title">День святого покровителя семьи</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col card-column" data-page="1">
+                    <div class="culture-card" data-card-id="3">
+                        <img src="./img/гусле.jpg" class="card-img-full" alt="Гусле">
+                        <div class="card-overlay">
+                            <h5 class="card-title">Одна струна — вся история народа</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col card-column" data-page="2" style="display: none;">
+                    <div class="culture-card" data-card-id="4">
+                        <img src="./img/пршут.jpg" class="card-img-full" alt="Пршут">
+                        <div class="card-overlay">
+                            <h5 class="card-title">Вкус гор в каждой ложке</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col card-column" data-page="2" style="display: none;">
+                    <div class="culture-card" data-card-id="5">
+                        <img src="./img/кофе.jpg" class="card-img-full" alt="Кофе">
+                        <div class="card-overlay">
+                            <h5 class="card-title">Кофе по-черногорски</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col card-column" data-page="2" style="display: none;">
+                    <div class="culture-card" data-card-id="6">
+                        <img src="./img/рождество.jpg" class="card-img-full" alt="Рождество">
+                        <div class="card-overlay">
+                            <h5 class="card-title">Два Рождества в году</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col card-column" data-page="3" style="display: none;">
+                    <div class="culture-card" data-card-id="7">
+                        <img src="./img/карнавал.jpg" class="card-img-full" alt="Карнавал">
+                        <div class="card-overlay">
+                            <h5 class="card-title">Карнавалы и маски</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col card-column" data-page="3" style="display: none;">
+                    <div class="culture-card" data-card-id="8">
+                        <img src="./img/катун.jpg" class="card-img-full" alt="Катун">
+                        <div class="card-overlay">
+                            <h5 class="card-title">Катуны: лето в горах</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col card-column" data-page="3" style="display: none;">
+                    <div class="culture-card" data-card-id="9">
+                        <img src="./img/свадьба.jpg" class="card-img-full" alt="Свадьба">
+                        <div class="card-overlay">
+                            <h5 class="card-title">Свадьба по-Черногорски</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-5">
+                <nav aria-label="Пагинация карточек">
+                    <ul class="pagination custom-pagination">
+                        <li class="page-item active" data-page="1"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item" data-page="2"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item" data-page="3"><a class="page-link" href="#">3</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </section>
+    
+    <div class="modal fade" id="cultureModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl"> 
+            <div class="modal-content overflow-hidden border-0 rounded-4">
+                <div class="row g-0 h-100">
+                    <div class="col-md-6 position-relative" style="min-height: 400px;">
+                        <img id="modal-img" src="" class="w-100 h-100 object-fit-cover position-absolute top-0 start-0" alt="Изображение">
+                    </div>
+                    <div class="col-md-6 bg-pale-blue position-relative">
+                        <button type="button" class="btn-close position-absolute top-0 end-0 m-4 z-3" data-bs-dismiss="modal" aria-label="Close"></button>
+                        
+                        <div class="p-5 d-flex flex-column h-100">
+                            <h3 id="modal-title" class="mb-4 fw-bold" style="font-family: 'Ysabeau', sans-serif; color: var(--dark-blue); font-size: 2.2rem; font-weight: bold;"></h3>
+                            <div class="modal-desc-wrapper overflow-auto flex-grow-1">
+                                <p id="modal-text" style="font-family: 'Ysabeau', sans-serif; font-size: 1.1rem; line-height: 1.6; color: var(--dark-green);"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <section id="nature" class="nature-slider-section">
+        <button class="slider-arrow prev" id="naturePrev"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="slider-arrow next" id="natureNext"><i class="fa-solid fa-chevron-right"></i></button>
+
+        <div class="nature-slider-container">
+            
+            <div class="nature-slide active" style="background-image: url('./img/дурмитор.jpg');">
+                <div class="overlay"></div>
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center justify-content-center justify-content-lg-start">
+                        <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 nature-content-wrapper">
+                            <h2 class="slide-title">Национальный</br>парк Дурмитор</h2>
+                            <p class="slide-desc">
+                                <strong>Дурмитор</strong> — самый известный и самый посещаемый национальный парк Черногории, включённый в список Всемирного наследия ЮНЕСКО (с 1980 года). Это 39 000 га диких гор, ледниковых озёр, сосновых лесов и самого глубокого каньона Европы — каньона реки Тары.
+                            </p>
+                            
+                            <div class="features-list">
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                                    <div class="text">Боботов Кук (2 523 м) — идеальная цель для альпинистов.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-regular fa-snowflake"></i></div>
+                                    <div class="text">18 ледниковых озёр, из них главное — Чёрное озеро.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-water"></i></div>
+                                    <div class="text">Каньон Тары: глубина до 1 300 м, второй в мире после Гранд-Каньона.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-archway"></i></div>
+                                    <div class="text">Мост Джурджевича. Он связывает Черногорию с Сербией.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nature-slide" style="background-image: url('./img/ловчен.jpg');">
+                <div class="overlay"></div>
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center justify-content-center justify-content-lg-start">
+                        <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 nature-content-wrapper">
+                            <h2 class="slide-title">Национальный</br>парк Ловчен</h2>
+                            <p class="slide-desc">
+                                <strong>Ловчен</strong> — компактный, но невероятно значимый национальный парк (6 400 га), расположщий на одноимённой горе в юго-западной Черногории. Это не только природная жемчужина, но и духовный центр страны: здесь находится мавзолей Петра II Петровича-Негоша — поэта, философа и правителя, которого называют «отцом черногорской нации».
+                            </p>
+                            
+                            <div class="features-list">
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-mountain-sun"></i></div>
+                                    <div class="text">Штировник — самая высокая вершина горы Ловчен.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-building-columns"></i></div>
+                                    <div class="text">Мавзолей Негоша — гробница последнего духовного правителя Черногории.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-house-chimney"></i></div>
+                                    <div class="text">Деревня Негуши — родина династии Петровичей и пршута.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-road"></i></div>
+                                    <div class="text">Серпантин Котор–Цетинье — 25 крутых поворотов, невероятные виды.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nature-slide" style="background-image: url('./img/редкие\ животные.png');">
+                <div class="overlay"></div>
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center justify-content-center justify-content-lg-start">
+                        <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 nature-content-wrapper">
+                            <h2 class="slide-title">Редкие животные</h2>
+                            <p class="slide-desc">
+                                <strong>Черногория</strong> — одна из самых биоразнообразных стран Европы на единицу площади. Здесь обитает около 500 видов позвоночных, из них многие — редкие, эндемичные или под угрозой исчезновения. Большинство прячется в национальных парках (Дурмитор, Ловчен, Проклетие, Биоградская гора, Скадарское озеро). Некоторые из самых редких животных:
+                            </p>
+                            
+                            <div class="features-list compact-list">
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-paw"></i></div> <div class="text">Бурый медведь: в густых лесах Дурмитора и Проклетия.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-cat"></i></div> <div class="text">Балканская рысь: тихая, как тень, менее 50 особей.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-dove"></i></div> <div class="text">Белоголовый сип: над каньоном Тары парит огромный гриф.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-fish-fins"></i></div> <div class="text">Дельфин-афалина: часто встречаются в Бока-Которской бухте.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nature-slide" style="background-image: url('./img/флора.png');">
+                <div class="overlay"></div>
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center justify-content-center justify-content-lg-start">
+                        <div class="col-12 col-md-10 offset-md-1 col-lg-10 offset-lg-1 nature-content-wrapper">
+                            <h2 class="slide-title">Зелёное сердце</h2>
+                            <p class="slide-desc">
+                                <strong>Черногория</strong> — одна из самых ботанически разнообразных стран Европы на единицу площади. Здесь произрастает свыше 3 500 видов растений, из них более 300 — эндемики, а многие — реликты ледникового периода. Большинство сокровищ скрыто в национальных парках (Дурмитор, Ловчен, Проклетие, Биоградская гора, Скадарское озеро). Некоторые самые интересные:
+                            </p>
+                            
+                            <div class="features-list compact-list">
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-brands fa-pagelines"></i></div> <div class="text">Эндемичный колокольчик Ловчена: растёт только здесь.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-spa"></i></div> <div class="text">Орхидеи Проклетия: в альпийских лугах цветут дикие орхидеи.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-seedling"></i></div> <div class="text">Каштановые рощи Пераста: посажены ещё венецианцами.</div>
+                                </div>
+                                <div class="feature-item">
+                                    <div class="icon"><i class="fa-solid fa-tree"></i></div> <div class="text">Девственный лес Биоградской горы: один из последних в Европе.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="quizzes" class="py-5 position-relative">
+        <div class="container py-5">
+            <h2 class="text-center mb-5 display-5 fw-bold">Проверьте свои знания</h2>
+            
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
+
+                <div class="col">
+                    <div class="quiz-card h-100">
+                        <div class="quiz-icon">
+                            <i class="fa-solid fa-passport"></i>
+                        </div>
+                        <div class="quiz-body">
+                            <h3 class="quiz-title">Граница на замке?</h3>
+                            <p class="quiz-desc">Разберитесь в тонкостях «боровишны», правилах ввоза и регистрации туристов. 10 вопросов.</p>
+                            <div class="quiz-meta">
+                                <span><i class="fa-regular fa-clock"></i> 10 мин</span>
+                                <span><i class="fa-solid fa-list-check"></i> 10 вопросов</span>
+                            </div>
+                            <a href="quiz-page.html?type=visa" class="btn btn-quiz stretched-link">Начать тест</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="quiz-card h-100">
+                        <div class="quiz-icon">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </div>
+                        <div class="quiz-body">
+                            <h3 class="quiz-title">Гид по маршрутам</h3>
+                            <p class="quiz-desc">Помните, где находится Голубая пещера и что входит в винный тур? Проверьте себя.</p>
+                            <div class="quiz-meta">
+                                <span><i class="fa-regular fa-clock"></i> 10 мин</span>
+                                <span><i class="fa-solid fa-list-check"></i> 10 вопросов</span>
+                            </div>
+                            <a href="quiz-page.html?type=tours" class="btn btn-quiz stretched-link">Начать тест</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="quiz-card h-100">
+                        <div class="quiz-icon">
+                            <i class="fa-solid fa-guitar"></i>
+                        </div>
+                        <div class="quiz-body">
+                            <h3 class="quiz-title">Свой среди своих</h3>
+                            <p class="quiz-desc">Пршут, гусле, Слава. Насколько хорошо вы понимаете черногорскую душу?</p>
+                            <div class="quiz-meta">
+                                <span><i class="fa-regular fa-clock"></i> 10 мин</span>
+                                <span><i class="fa-solid fa-list-check"></i> 10 вопросов</span>
+                            </div>
+                            <a href="quiz-page.html?type=culture" class="btn btn-quiz stretched-link">Начать тест</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="quiz-card h-100">
+                        <div class="quiz-icon">
+                            <i class="fa-solid fa-tree"></i>
+                        </div>
+                        <div class="quiz-body">
+                            <h3 class="quiz-title">Следопыт</h3>
+                            <p class="quiz-desc">Отличите ли вы Дурмитор от Ловчена? Вопросы о флоре, фауне и парках.</p>
+                            <div class="quiz-meta">
+                                <span><i class="fa-regular fa-clock"></i> 10 мин</span>
+                                <span><i class="fa-solid fa-list-check"></i> 10 вопросов</span>
+                            </div>
+                            <a href="quiz-page.html?type=nature" class="btn btn-quiz stretched-link">Начать тест</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8 col-md-10">
+                    <div class="quiz-card quiz-card-big h-100">
+                        <div class="quiz-icon">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div class="quiz-body">
+                            <h3 class="quiz-title">Знаток Черногории (Master)</h3>
+                            <p class="quiz-desc">Финальный босс. 25 вопросов по всем разделам сайта. Только для настоящих экспертов.</p>
+                            <div class="quiz-meta">
+                                <span><i class="fa-regular fa-clock"></i> 25 мин</span>
+                                <span><i class="fa-solid fa-list-check"></i> 25 вопросов</span>
+                            </div>
+                            <a href="quiz-page.html?type=general" class="btn btn-quiz stretched-link">Начать большой тест</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container py-5">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-3 text-center text-lg-start">
+                    <img src="./img/логотип_без_фона.svg" alt="Montenegro Guide" width="100" class="footer-logo-img">
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <h5 class="fw-bold mb-3">Контакты</h5>
+                        <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 gap-sm-5 fs-6 text-dark">
+                            <div>
+                                <strong>Email:</strong><br>
+                                <a href="mailto:montenegroguidemail.ru" class="text-dark text-decoration-none hover-dark">
+                                montenegroguidemail.ru
+                                </a>
+                            </div>
+                            <div>
+                                <strong>Телефон:</strong><br>
+                                <a href="tel:+79992225533" class="text-dark text-decoration-none hover-dark">
+                                +7 999 222 55-33
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 text-center text-lg-end">
+                    <h5 class="fw-bold mb-4">Социальные сети</h5>
+                    <div class="social-icons d-flex justify-content-center justify-content-lg-end gap-4">
+                        <a href="#" class="social-link" aria-label="Telegram"><i class="fab fa-telegram-plane fa-2x"></i></a>
+                        <a href="#" class="social-link" aria-label="VK"><i class="fab fa-vk fa-2x"></i></a>
+                        <a href="#" class="social-link" aria-label="OK"><i class="fab fa-odnoklassniki fa-2x"></i></a>
+                    </div>
+                </div>
+
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <p class="copyright mb-0 opacity-90">
+                    © 2025 MontenegroGuide. Все права защищены.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/header-scroll.js"></script>
+    <script src="js/tours-slider.js"></script>
+    <script src="js/culture-cards.js"></script>
+    <script src="js/nature-slider.js"></script>
+</body>
+</html>

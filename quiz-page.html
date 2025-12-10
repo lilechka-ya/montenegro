@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тестирование - Montenegro Guide</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> 
+    
+    <style>
+        /* Специфичные стили для страницы теста */
+        body {
+            background-color: #F0F8FF; /* $pale-blue */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quiz-container {
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 95%;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timer-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: #152E42; /* $dark-blue */
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: 'Unbounded', sans-serif;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .question-number {
+            text-align: center;
+            color: #8DC7FF; /* $muted-blue */
+            font-family: 'Unbounded', sans-serif;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+
+        .question-text {
+            text-align: center;
+            font-family: 'Ysabeau', sans-serif;
+            font-size: 1.8rem;
+            color: #152E42;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .option-btn {
+            background: white;
+            border: 2px solid #E0E0E0;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: left;
+            font-family: 'Ysabeau', sans-serif;
+            font-size: 1.1rem;
+            color: #152E42;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .option-btn:hover {
+            border-color: #8DC7FF;
+            background: #F0F8FF;
+        }
+
+        .option-btn.selected {
+            border-color: #2B94F9;
+            background: #2B94F9;
+            color: white;
+            box-shadow: 0 5px 15px rgba(43, 148, 249, 0.3);
+        }
+
+        .action-area {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .btn-next {
+            background: #2B94F9;
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-family: 'Unbounded', sans-serif;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            opacity: 1;
+            transition: all 0.3s;
+        }
+
+        .btn-next:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* Экран результатов */
+        #result-screen {
+            text-align: center;
+            display: none; /* Скрыт по умолчанию */
+        }
+        
+        .result-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: pop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .result-score {
+            font-family: 'Unbounded', sans-serif;
+            font-size: 3rem;
+            color: #2B94F9;
+            margin-bottom: 10px;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+
+        /* Адаптив */
+        @media(min-width: 768px) {
+            .options-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .quiz-container {
+                padding: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="quiz-container">
+        
+        <div id="quiz-screen">
+            <div class="timer-badge">
+                <i class="fa-regular fa-clock"></i> <span id="timer">00:00</span>
+            </div>
+
+            <div class="question-number">Вопрос <span id="current-q">1</span> из <span id="total-q">10</span></div>
+            
+            <h2 class="question-text" id="question-text">Загрузка вопроса...</h2>
+
+            <div class="options-grid" id="options-container">
+                </div>
+
+            <div class="action-area">
+                <button class="btn-next" id="next-btn" disabled>Далее</button>
+            </div>
+        </div>
+
+        <div id="result-screen">
+            <div id="result-animation-icon" class="result-icon"></div>
+            <h2 style="font-family: 'Unbounded'; color: #152E42;">Тест завершен!</h2>
+            <div class="result-score" id="score-display">0/10</div>
+            <p id="result-message" style="font-family: 'Ysabeau'; font-size: 1.3rem; margin-bottom: 30px;"></p>
+            
+            <a href="index.html#quizzes" class="btn btn-outline-primary rounded-pill px-4 py-2">Вернуться к списку тестов</a>
+            <button onclick="location.reload()" class="btn btn-primary rounded-pill px-4 py-2 ms-2">Попробовать снова</button>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+       // === БАЗА ВОПРОСОВ ===
+        const allData = {
+            // 1. ВЪЕЗД И ВИЗЫ
+            visa: [
+                { 
+                    q: "Сколько дней граждане РФ могут находиться в Черногории без визы (в период 180 дней)?", 
+                    options: ["30 дней", "90 дней", "60 дней", "1 год"], 
+                    correct: 1 
+                },
+                { 
+                    q: "В какой срок нужно оформить туристическую регистрацию («Белый картон»)?", 
+                    options: ["В течение 24 часов", "В течение 3 дней", "В течение недели", "Перед вылетом"], 
+                    correct: 0 
+                },
+                { 
+                    q: "Какой штраф грозит туристу за отсутствие регистрации?", 
+                    options: ["Штрафов нет", "Депортация", "От 60 до 200 €", "1000 €"], 
+                    correct: 2 
+                },
+                { 
+                    q: "Какой документ нужен для продления пребывания свыше 90 дней?", 
+                    options: ["Туристическая виза", "Boravišna dozvola (ВНЖ)", "Паспорт ЕС", "Справка из отеля"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Сколько наличных денег можно ввозить без декларации?", 
+                    options: ["До 5 000 €", "До 50 000 €", "До 10 000 €", "Любую сумму"], 
+                    correct: 2 
+                },
+                { 
+                    q: "За сколько дней до въезда должна быть сделана прививка от бешенства питомцу?", 
+                    options: ["Не ранее 10 дней", "Не ранее 21 дня", "В день вылета", "За полгода"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Сколько литров вина можно ввезти в Черногорию беспошлинно?", 
+                    options: ["1 литр", "5 литров", "2 литра", "Ввоз алкоголя запрещен"], 
+                    correct: 2 
+                },
+                { 
+                    q: "Можно ли работать в Черногории, находясь в стране по «безвизу»?", 
+                    options: ["Да, свободно", "Нет, это запрещено", "Только удаленно", "Только гидом"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Где можно оформить туристическую регистрацию онлайн?", 
+                    options: ["На сайте Госуслуг", "На портале e-turista.me", "На booking.com", "В Facebook"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Каков срок действия паспорта должен быть на момент выезда из страны?", 
+                    options: ["Любой действующий", "Минимум 1 месяц", "Минимум 3 месяца", "Минимум 6 месяцев"], 
+                    correct: 2 
+                }
+            ],
+
+            // 2. ТУРЫ
+            tours: [
+                { 
+                    q: "Что входит в программу яхта-тура «Голубая пещера» помимо самой пещеры?", 
+                    options: ["Подъем на Ловчен", "Посещение устричной фермы", "Рафтинг", "Дегустация вин"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Какова глубина каньона реки Тара?", 
+                    options: ["500 метров", "800 метров", "1300 метров", "2000 метров"], 
+                    correct: 2 
+                },
+                { 
+                    q: "Какое блюдо подают на обед во время рафтинга?", 
+                    options: ["Пиццу", "Ягненка «испод сача»", "Суши", "Пасту с морепродуктами"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Сколько дней длится экскурсия «Макси Черногория»?", 
+                    options: ["1 день", "2 дня", "3 дня", "5 дней"], 
+                    correct: 2 
+                },
+                { 
+                    q: "В каком поселке проходит обед с пршутом в туре «Макси Черногория»?", 
+                    options: ["В Будве", "В Негушах", "В Которе", "В Подгорице"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Какова площадь виноградника в винном туре «Plantáže»?", 
+                    options: ["50 га", "100 га", "300 га", "1000 га"], 
+                    correct: 2 
+                },
+                { 
+                    q: "Какой подарок получают гости винного тура?", 
+                    options: ["Бутылку вина 0,75 л", "Бокал", "Магнит", "Головку сыра"], 
+                    correct: 0 
+                },
+                { 
+                    q: "С какого возраста разрешен рафтинг по Таре (уровень «Лайт»)?", 
+                    options: ["С 18 лет", "С 5 лет", "С 10 лет", "Только для профи"], 
+                    correct: 2 
+                },
+                { 
+                    q: "Что включено в яхта-тур на борту?", 
+                    options: ["Только вода", "Шампанское и фрукты", "Полноценный обед", "Крепкий алкоголь"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Какие города посещают в первый день тура «Макси Черногория»?", 
+                    options: ["Котор и Пераст", "Бар и Улцинь", "Подгорица и Никшич", "Тиват и Герцег-Нови"], 
+                    correct: 0 
+                }
+            ],
+
+            // 3. КУЛЬТУРА
+            culture: [
+                { 
+                    q: "Что такое «Слава» в черногорской традиции?", 
+                    options: ["Народный танец", "День святого покровителя семьи", "Название национального блюда", "Свадебный обряд"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Сколько струн у музыкального инструмента гусле?", 
+                    options: ["Одна", "Три", "Шесть", "Семь"], 
+                    correct: 0 
+                },
+                { 
+                    q: "Что такое пршут?", 
+                    options: ["Вид сыра", "Вяленый свиной окорок", "Рыбный суп", "Сладкий пирог"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Сколько раз в году в Черногории празднуют Рождество (из-за разных календарей)?", 
+                    options: ["Один раз", "Два раза", "Не празднуют", "Три раза"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Что такое «Катуны»?", 
+                    options: ["Зимние дома", "Летние пастбища в горах", "Вид лодки", "Национальная одежда"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Какая главная черта черногорского характера упоминается на сайте?", 
+                    options: ["Пунктуальность", "Гостеприимство", "Скрытность", "Торопливость"], 
+                    correct: 1 
+                },
+                { 
+                    q: "О чем поют под аккомпанемент гусле?", 
+                    options: ["О любви", "Об истории народа и героях", "О природе", "О еде"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Какой напиток считается традиционным для общения (по-черногорски)?", 
+                    options: ["Чай", "Кофе", "Сок", "Компот"], 
+                    correct: 1 
+                },
+                { 
+                    q: "С чем часто связаны карнавалы в Черногории?", 
+                    options: ["С масками и шествиями", "С поеданием блинов", "Со спортом", "С тишиной"], 
+                    correct: 0 
+                },
+                { 
+                    q: "Где делают самый известный пршут?", 
+                    options: ["В Негушах", "В Будве", "На Скадарском озере", "В Дурмиторе"], 
+                    correct: 0 
+                }
+            ],
+
+            // 4. ПРИРОДА
+            nature: [
+                { 
+                    q: "Какой национальный парк включен в список ЮНЕСКО?", 
+                    options: ["Ловчен", "Дурмитор", "Скадарское озеро", "Биоградская гора"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Как называется самая высокая вершина Дурмитора?", 
+                    options: ["Штировник", "Боботов Кук", "Езерский врх", "Ловчен"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Какое озеро называют «Черным»?", 
+                    options: ["Из-за грязной воды", "Из-за отражения хвойных деревьев", "Из-за черного песка", "Из-за глубины"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Где находится мавзолей Петра II Петровича-Негоша?", 
+                    options: ["В Цетинье", "На горе Ловчен", "В Дурмиторе", "В Которе"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Сколько поворотов на знаменитом серпантине Котор–Цетинье?", 
+                    options: ["10", "15", "25", "50"], 
+                    correct: 2 
+                },
+                { 
+                    q: "Какое редкое животное, живущее в Проклетии, имеет кисточки на ушах?", 
+                    options: ["Бурый медведь", "Балканская рысь", "Волк", "Шакал"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Какое дерево растет в девственном лесу «Црна Пода»?", 
+                    options: ["Черная сосна", "Олива", "Пальма", "Береза"], 
+                    correct: 0 
+                },
+                { 
+                    q: "Какой размах крыльев у белоголового сипа?", 
+                    options: ["1 метр", "Почти 3 метра", "5 метров", "50 см"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Какой эндемичный цветок растет на склонах Ловчена?", 
+                    options: ["Роза", "Колокольчик Ловчена", "Тюльпан", "Лотос"], 
+                    correct: 1 
+                },
+                { 
+                    q: "Где находится один из трех последних девственных лесов Европы?", 
+                    options: ["На Биоградской горе", "В Будве", "На пляже Яз", "В Тивате"], 
+                    correct: 0 
+                }
+            ],
+            
+            // 5. ОБЩИЙ ТЕСТ (Массив будет заполнен автоматически ниже)
+            general: [] 
+        };
+
+        // === АВТО-ГЕНЕРАЦИЯ БОЛЬШОГО ТЕСТА (25 вопросов) ===
+        // Берем все вопросы, перемешиваем и выбираем первые 25
+        const allQuestions = [
+            ...allData.visa, 
+            ...allData.tours, 
+            ...allData.culture, 
+            ...allData.nature
+        ];
+        
+        // Функция перемешивания (Fisher-Yates)
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        // Заполняем general случайными 25 вопросами
+        allData.general = shuffleArray([...allQuestions]).slice(0, 25);
+
+        // === ЛОГИКА ===
+        const urlParams = new URLSearchParams(window.location.search);
+        const type = urlParams.get('type') || 'visa'; // По умолчанию виза
+        
+        let questions = allData[type] || allData.visa;
+        
+        // Настройка времени (10 мин или 25 мин)
+        let timeLimit = (type === 'general') ? 25 * 60 : 10 * 60;
+        
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let timerInterval;
+
+        const timerEl = document.getElementById('timer');
+        const questionTextEl = document.getElementById('question-text');
+        const optionsContainer = document.getElementById('options-container');
+        const nextBtn = document.getElementById('next-btn');
+        const currentQEl = document.getElementById('current-q');
+        const totalQEl = document.getElementById('total-q');
+        
+        // Элементы результата
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultScreen = document.getElementById('result-screen');
+        const scoreDisplay = document.getElementById('score-display');
+        const resultMessage = document.getElementById('result-message');
+        const resultIcon = document.getElementById('result-animation-icon');
+
+        // Инициализация
+        function initQuiz() {
+            totalQEl.textContent = questions.length;
+            startTimer();
+            loadQuestion();
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timeLimit--;
+                let minutes = Math.floor(timeLimit / 60);
+                let seconds = timeLimit % 60;
+                timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                if (timeLimit <= 0) {
+                    finishQuiz();
+                }
+            }, 1000);
+        }
+
+        function loadQuestion() {
+            const q = questions[currentQuestionIndex];
+            questionTextEl.textContent = q.q;
+            currentQEl.textContent = currentQuestionIndex + 1;
+            
+            optionsContainer.innerHTML = '';
+            nextBtn.disabled = true;
+
+            q.options.forEach((opt, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.textContent = opt;
+                btn.onclick = () => selectOption(index, btn);
+                optionsContainer.appendChild(btn);
+            });
+        }
+
+        let selectedOptionIndex = null;
+
+        function selectOption(index, btnElement) {
+            // Сброс выделения
+            document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+            // Выделение текущего
+            btnElement.classList.add('selected');
+            selectedOptionIndex = index;
+            nextBtn.disabled = false;
+        }
+
+        nextBtn.onclick = () => {
+            // Проверка ответа
+            if (selectedOptionIndex === questions[currentQuestionIndex].correct) {
+                score++;
+            }
+            
+            currentQuestionIndex++;
+            selectedOptionIndex = null;
+
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                finishQuiz();
+            }
+        };
+
+        function finishQuiz() {
+            clearInterval(timerInterval);
+            quizScreen.style.display = 'none';
+            resultScreen.style.display = 'block';
+
+            scoreDisplay.textContent = `${score}/${questions.length}`;
+            
+            const percent = (score / questions.length) * 100;
+
+            if (percent >= 80) {
+                // ОТЛИЧНО
+                resultIcon.innerHTML = '🎉';
+                resultMessage.textContent = "Вы огромный молодец, отлично знаете Черногорию! Так держать!";
+                // Запуск салюта
+                confetti({ particleCount: 150, spread: 70, origin: { y: 0.6 } });
+            } else if (percent >= 50) {
+                // СРЕДНЕ
+                resultIcon.innerHTML = '👍';
+                resultIcon.style.color = '#2B94F9';
+                resultMessage.textContent = "Неплохой результат! Вы знаете основы, но есть что поизучать еще.";
+            } else {
+                // ПЛОХО
+                resultIcon.innerHTML = '😢';
+                resultIcon.style.color = '#ff6b6b';
+                resultMessage.textContent = "Пока слабовато. Советуем перечитать разделы сайта и попробовать снова!";
+            }
+        }
+
+        // Запуск
+        initQuiz();
+
+    </script>
+</body>
+</html>
