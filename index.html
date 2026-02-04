@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Черногория</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="styles.css">
@@ -18,8 +19,37 @@
 
         ym(106630966, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
     </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.2/js.cookie.js"></script>
     <noscript><div><img src="https://mc.yandex.ru/watch/106630966" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
+     <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            width: 100%;
+            height: 100%;
+        }
+        .cookie-notification {
+            position: fixed;
+            background-color: rgba(0, 4, 57, 0.8);
+            bottom: 0;
+            width: 100%;
+            color: white;
+            padding: 15px;
+            z-index: 1000;
+        }
+        .cookie-notification_hidden_yes {
+            display: none;
+        }
+        .cookie-notification__header {
+            margin-bottom: 10px;
+            font-size: 23px;
+        }
+        .cookie-notification__body {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
 
@@ -545,7 +575,7 @@
                                 <span><i class="fa-regular fa-clock"></i> 10 мин</span>
                                 <span><i class="fa-solid fa-list-check"></i> 10 вопросов</span>
                             </div>
-                            <a href="quiz-page.html?type=visa" class="btn btn-quiz stretched-link">Начать тест</a>
+                            <a href="quiz-page.html?type=visa" class="btn btn-quiz stretched-link" onclick="ym(106630966,'reachGoal','start_quiz_event'); return true;">Начать тест</a>
                         </div>
                     </div>
                 </div>
@@ -562,7 +592,7 @@
                                 <span><i class="fa-regular fa-clock"></i> 10 мин</span>
                                 <span><i class="fa-solid fa-list-check"></i> 10 вопросов</span>
                             </div>
-                            <a href="quiz-page.html?type=tours" class="btn btn-quiz stretched-link">Начать тест</a>
+                            <a href="quiz-page.html?type=tours" class="btn btn-quiz stretched-link" onclick="ym(106630966,'reachGoal','start_quiz_event'); return true;">Начать тест</a>
                         </div>
                     </div>
                 </div>
@@ -579,7 +609,7 @@
                                 <span><i class="fa-regular fa-clock"></i> 10 мин</span>
                                 <span><i class="fa-solid fa-list-check"></i> 10 вопросов</span>
                             </div>
-                            <a href="quiz-page.html?type=culture" class="btn btn-quiz stretched-link">Начать тест</a>
+                            <a href="quiz-page.html?type=culture" class="btn btn-quiz stretched-link" onclick="ym(106630966,'reachGoal','start_quiz_event'); return true;">Начать тест</a>
                         </div>
                     </div>
                 </div>
@@ -596,7 +626,7 @@
                                 <span><i class="fa-regular fa-clock"></i> 10 мин</span>
                                 <span><i class="fa-solid fa-list-check"></i> 10 вопросов</span>
                             </div>
-                            <a href="quiz-page.html?type=nature" class="btn btn-quiz stretched-link">Начать тест</a>
+                            <a href="quiz-page.html?type=nature" class="btn btn-quiz stretched-link" onclick="ym(106630966,'reachGoal','start_quiz_event'); return true;">Начать тест</a>
                         </div>
                     </div>
                 </div>
@@ -613,7 +643,7 @@
                                 <span><i class="fa-regular fa-clock"></i> 25 мин</span>
                                 <span><i class="fa-solid fa-list-check"></i> 25 вопросов</span>
                             </div>
-                            <a href="quiz-page.html?type=general" class="btn btn-quiz stretched-link">Начать большой тест</a>
+                            <a href="quiz-page.html?type=general" class="btn btn-quiz stretched-link" onclick="ym(106630966,'reachGoal','start_quiz_event'); return true;">Начать большой тест</a>
                         </div>
                     </div>
                 </div>
@@ -634,8 +664,8 @@
                         <div class="d-flex flex-column flex-sm-row justify-content-center gap-3 gap-sm-5 fs-6 text-dark">
                             <div>
                                 <strong>Email:</strong><br>
-                                <a href="mailto:montenegroguidemail.ru" class="text-dark text-decoration-none hover-dark">
-                                montenegroguidemail.ru
+                                <a href="mailto:liliana.soyenkova@mail.ru" class="text-dark text-decoration-none hover-dark">
+                                info@montenegroguide.ru
                                 </a>
                             </div>
                             <div>
@@ -665,6 +695,69 @@
             </div>
         </div>
     </footer>
+
+    <div class="cookie-notification cookie-notification_hidden_yes">
+        <div class="cookie-notification__header">Предупреждение о сборе статистики</div>
+        <div class="cookie-notification__body">
+       <p>Этот сайт собирает статистику посещения и данные посетителей.</p>
+       <p>[Ссылка на Пользовательское соглашение вашего сайта или на Политику конфиденциальности вашего сайта]</p>
+        </div>
+        <div class="cookie-notification__buttons">
+            <button class="cookie-notification__button" id="yes">Я согласен</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var messageElement = document.querySelector('.cookie-notification');
+        // Если нет cookies, то показываем плашку
+        if (!Cookies.get('agreement')) {
+            showMessage();
+        } else {
+            initCounter();
+        }
+        // Загружаем сам код счетчика сразу
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document,'script','https://mc.yandex.ru/metrika/tag.js', 'ym')
+        // Функция добавляет класс к DOM-элементу. Вы можете использовать библиотеку jQuery или другой фреймворк
+        function addClass (o, c) {
+            var re = new RegExp("(^|\\s)" + c + "(\\s|$)", "g");
+            if (!o || re.test(o.className)) {
+                return;
+            }
+            o.className = (o.className + " " + c).replace(/\s+/g, " ").replace(/(^ | $)/g, "");
+        }
+        // Функция удаляет класс из DOM-элемента. Вы можете использовать библиотеку jQuery или другой фреймворк
+        function removeClass (o, c) {
+            var re = new RegExp('(^|\\s)' + c + '(\\s|$)', 'g');
+            if (!o) {
+                return;
+            }
+            o.className = o.className.replace(re, '$1').replace(/\s+/g, ' ').replace(/(^ | $)/g, '');
+        }
+        // Функция, которая прячет предупреждение
+        function hideMessage () {
+            addClass(messageElement, 'cookie-notification_hidden_yes');
+        }
+        // Функция, которая показывает предупреждение
+        function showMessage () {
+            removeClass(messageElement, 'cookie-notification_hidden_yes');
+        }
+        function saveAnswer () {
+            // Прячем предупреждение
+            hideMessage();
+
+            // Ставим cookies
+            Cookies.set('agreement', '1');
+        }
+        function initCounter () {
+            ym(XXXX, 'init', {});
+            saveAnswer();
+        }
+        // Нажатие кнопки "Я согласен"
+        document.querySelector('#yes').addEventListener('click', function () {
+            initCounter();
+        });
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/header-scroll.js"></script>
